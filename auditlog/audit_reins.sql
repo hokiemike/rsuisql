@@ -1,0 +1,22 @@
+select * 
+from AUDIT_LOG
+where TABLE_NAME = 'A'
+and ( TABLE_KEY LIKE '%605903%' OR TABLE_KEY LIKE '%605904%')
+
+select * 
+from AUDIT_LOG
+where TABLE_NAME = 'RI_LAYER_LEVEL'
+and ( TABLE_KEY LIKE '%605903%' ) 
+
+select * 
+from AUDIT_LOG
+where TABLE_NAME = 'QUOTE_BINDER'
+and ( TABLE_KEY LIKE '%1157145%' )  
+order by AUDIT_DATE, AUDIT_TIME
+
+
+select * 
+from AUDIT_LOG
+where TABLE_NAME = 'SUBMISSION'
+and ( TABLE_KEY LIKE '%1477521%' )  
+order by AUDIT_DATE, AUDIT_TIME

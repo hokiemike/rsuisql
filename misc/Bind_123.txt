@@ -1,0 +1,56 @@
+<gatewayrequest program="Liquor Liability">
+    <BindPolicy>
+        <submissionnumber>123</submissionnumber>
+        <companycode>N</companycode>
+        <effectivedate>9/17/2005</effectivedate>
+        <expirationdate>9/18/2005</expirationdate>
+        <grosspremium>385</grosspremium>
+        <bounddate>1/1/2005</bounddate>
+        <aggregatelimit>1230000</aggregatelimit>
+        <occurrencelimit>1230000</occurrencelimit>
+        <minimumpremium>100</minimumpremium>
+        <depositpremium>101</depositpremium>
+        <exposureamount>102</exposureamount>
+        <assaultandbatterybuyback>103</assaultandbatterybuyback>
+        <insured>
+            <name>FUTURE HERITAGE</name>
+            <address1>375 W BRIARCLIFF RD</address1>
+            <address2></address2>
+            <city>BOLINGBROOK</city>
+            <statecode>IL</statecode>
+            <zipcode>60440</zipcode>
+        </insured>
+        <owner>
+            <name>FUTURE HERITAGE</name>
+            <address1>375 W BRIARCLIFF RD</address1>
+            <address2></address2>
+            <city>BOLINGBROOK</city>
+            <statecode>IL</statecode>
+            <zipcode>60440</zipcode>
+        </owner>
+        <location>
+            <address1>375 W BRIARCLIFF RD</address1>
+            <address2></address2>
+            <city>BOLINGBROOK</city>
+            <statecode>IL</statecode>
+            <zipcode>60440</zipcode>
+        </location>
+        <rating>
+            <classno>58169</classno>
+            <receipts>0</receipts>
+            <classpremium>1230000</classpremium>
+        </rating>
+        <agent>
+            <name>John Jacob</name>
+            <companyname>TW GROUP INC.</companyname>
+            <address1>520 N. CASS AVENUE #201</address1>
+            <address2></address2>
+            <city>WESTMONT</city>
+            <statecode>IL</statecode>
+            <zipcode>60559</zipcode>
+            <licenseno>175</licenseno>
+            <licensestate>IL</licensestate>
+            <njtransitno></njtransitno>
+       </agent>
+    </BindPolicy>
+</gatewayrequest>

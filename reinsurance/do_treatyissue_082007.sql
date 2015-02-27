@@ -1,0 +1,87 @@
+
+select distinct s.SUB_SUBMISSION_NUMBER, s.SUB_INSURED_NAME, s.SUB_EFFECTIVE_DATE, 
+tp.PROFILE_NAME, riml.MARKET_REINSURANCE_PERCENT, riml.*
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join TREATY_PROFILE tp on tp.PROFILE_SKEY = riml.PROFILE_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and tp.URC != 'Y'
+and rill.LAYER_LEVEL_SKEY IN (
+select distinct rill.LAYER_LEVEL_SKEY
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and s.DEPARTMENT_NUMBER = 300
+and riml.PROFILE_SKEY is null)
+order by s.SUB_EFFECTIVE_DATE
+
+
+select distinct s.SUB_EFFECTIVE_DATE, s.SUB_SUBMISSION_NUMBER, s.SUB_INSURED_NAME, rill.*
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and not exists (
+      select 1 from RI_LAYER_LEVEL rill2 
+      join RI_MARKET_LEVEL riml2 on riml2.LAYER_LEVEL_SKEY = rill2.LAYER_LEVEL_SKEY
+      join TREATY_PROFILE tp2 on tp2.PROFILE_SKEY = riml2.PROFILE_SKEY
+      where rill2.LAYER_LEVEL_SKEY = rill.LAYER_LEVEL_SKEY
+       and isnull(tp2.URC,'N') != 'Y')
+and rill.LAYER_LEVEL_SKEY IN (
+select distinct rill.LAYER_LEVEL_SKEY
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and s.DEPARTMENT_NUMBER = 300
+and riml.PROFILE_SKEY is null)
+order by s.SUB_EFFECTIVE_DATE
+
+
+select distinct tp.PROFILE_NAME, riml.*
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join TREATY_PROFILE tp on tp.PROFILE_SKEY = riml.PROFILE_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and tp.URC != 'Y'
+and rill.MKT_LEVEL_SKEY = 318794
+
+
+
+select distinct s.CreateDate, s.SUB_INSURED_NAME, rill.LAYER_LEVEL_SKEY, rill.LAYER_ORDER_NUMBER
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and s.DEPARTMENT_NUMBER = 300
+and riml.PROFILE_SKEY is null
+and s.CreateDate > '1/1/2004'
+order by s.CreateDate
+
+select distinct  rill.LAYER_LEVEL_SKEY, rill.LAYER_ORDER_NUMBER
+from RI_MARKET_LEVEL riml
+join RI_LAYER_LEVEL rill on rill.LAYER_LEVEL_SKEY = riml.LAYER_LEVEL_SKEY
+join RI_HEADER_LEVEL rihl on rihl.HEADER_LEVEL_SKEY = rill.HEADER_LEVEL_SKEY
+join SUBMISSION s on s.SUB_RECORD_NUMBER = rihl.SUB_RECORD_NUMBER  
+      and rihl.QB_SEQUENCE_NO = s.QB_SEQUENCE_NO
+where 1=1
+and s.DEPARTMENT_NUMBER = 300
+and riml.PROFILE_SKEY is null
+and s.CreateDate > '1/1/2004'
+
+

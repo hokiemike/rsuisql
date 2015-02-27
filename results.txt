@@ -1,0 +1,189 @@
+./bindingauth/formsattachedaudit.sql:9:LEFT OUTER JOIN PGInput pgi ON RIGHT('000000' + CONVERT(VARCHAR, s.sub_policy_Number), 6) = pgi.PolicyNumber 
+./bindingauth/formsattachedaudit.sql:36:        JOIN PGInput pgi ON RIGHT('000000'+ CONVERT(VARCHAR, s.sub_policy_Number),6) = pgi.PolicyNumber
+./bindingauth/auditlog.sql:7:select * from Submission where sub_policy_number = 1673
+./checkers/syschk_RIOrg2Endorsements.sql:3:select a.sub_record_number, a.sub_policy_number, g.endorsement_skey, isnull(f.company_skey, 0) as company_skey, isnull(d.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(market_ceded_premium * h.endtype_transeffect) as cededpremium
+./checkers/syschk_RIOrg2Endorsements.sql:25:group by a.sub_record_number, a.sub_policy_number, g.endorsement_skey,  f.company_skey, d.location_skey, profile_skey
+./checkers/syschk_RIOrg2Endorsements.sql:38:select sub_record_number, sub_policy_number, endorsement_skey, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./checkers/syschk_RIOrg2Endorsements.sql:41:group by sub_record_number, sub_policy_number, endorsement_skey, company_skey, profile_skey
+./checkers/syschk_RIOrg2Endorsements.sql:46:select a.sub_record_number, a.sub_policy_number, f.endorsement_skey, b.company_skey as company_skey, isnull(b.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(cededpremiumamt) *-1 as cededpremium
+./checkers/syschk_RIOrg2Endorsements.sql:59:group by a.sub_record_number, a.sub_policy_number,  f.endorsement_skey, b.company_skey, b.location_skey, b.profile_skey
+./checkers/syschk_RIOrg2Endorsements.sql:68:select sub_record_number, sub_policy_number, endorsement_skey, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./checkers/syschk_RIOrg2Endorsements.sql:71:group by sub_record_number, sub_policy_number, endorsement_skey, company_skey, profile_skey
+./checkers/syschk_RIOrg2Endorsements.sql:77:select a.sub_policy_number, a.sub_record_number, a.endorsement_skey, b.name as TreatyOrCompany,  a.cededpremium, 'in rsms2, not in accounting'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:87:select a.sub_policy_number, a.sub_record_number, a.endorsement_skey, b.profile_name,   a.cededpremium, 'in rsms2, not in accounting'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:97:select  a.sub_policy_number, a.sub_record_number, a.endorsement_skey, 'No Profile or Company',  a.cededpremium, 'in rsms2, not in accounting'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:110:select  a.sub_policy_number, a.sub_record_number, a.endorsement_skey, b.name,  a.cededpremium, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:119:select a.sub_policy_number, a.sub_record_number,  a.endorsement_skey, b.profile_name,   a.cededpremium, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:128:select a.sub_policy_number, a.sub_record_number,  a.endorsement_skey, 'No Profile or Company',   a.cededpremium, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:140:select a.sub_policy_number, a.sub_record_number, a.endorsement_skey, c.name,   a.cededpremium - b.cededpremium, 'in both, this is difference'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:149:select a.sub_policy_number, a.sub_record_number, a.endorsement_skey, c.profile_name,   a.cededpremium - b.cededpremium, 'in both, this is difference'  as msg
+./checkers/syschk_RIOrg2Endorsements.sql:158:select a.sub_policy_number, a.sub_record_number, a.endorsement_skey, 'No Profile or Company',   a.cededpremium - b.cededpremium, 'in both, this is difference'  as msg
+./checkers/syschk_RIOrg2Policies.sql:3:select a.sub_record_number, a.sub_policy_number, isnull(f.company_skey, 0) as company_skey, isnull(d.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(market_ceded_premium) as cededpremium
+./checkers/syschk_RIOrg2Policies.sql:21:group by a.sub_record_number, a.sub_policy_number, f.company_skey, d.location_skey, profile_skey
+./checkers/syschk_RIOrg2Policies.sql:34:select sub_record_number, sub_policy_number, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./checkers/syschk_RIOrg2Policies.sql:37:group by sub_record_number, sub_policy_number, company_skey, profile_skey
+./checkers/syschk_RIOrg2Policies.sql:42:select a.sub_record_number, a.sub_policy_number, b.company_skey as company_skey, isnull(b.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(cededpremiumamt) *-1 as cededpremium
+./checkers/syschk_RIOrg2Policies.sql:54:group by a.sub_record_number, a.sub_policy_number, b.company_skey, b.location_skey, b.profile_skey
+./checkers/syschk_RIOrg2Policies.sql:65:select sub_record_number, sub_policy_number, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./checkers/syschk_RIOrg2Policies.sql:68:group by sub_record_number, sub_policy_number, company_skey, profile_skey
+./checkers/syschk_RIOrg2Policies.sql:84:select a.sub_policy_number, a.sub_record_number,  b.name as TreatyOrCompany,  a.cededpremium as value, 'in rsms2, not in accounting '  as msg
+./checkers/syschk_RIOrg2Policies.sql:93:select a.sub_policy_number, a.sub_record_number, b.profile_name,   a.cededpremium as value, 'in rsms2, not in accounting'  as msg
+./checkers/syschk_RIOrg2Policies.sql:102:select  a.sub_policy_number, a.sub_record_number, 'No Profile or Company',  a.cededpremium as value, 'in rsms2, not in accounting'  as msg
+./checkers/syschk_RIOrg2Policies.sql:114:select  a.sub_policy_number, a.sub_record_number, b.name,  a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Policies.sql:122:select a.sub_policy_number, a.sub_record_number, b.profile_name,   a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Policies.sql:130:select a.sub_policy_number, a.sub_record_number, 'No Profile or Company',   a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./checkers/syschk_RIOrg2Policies.sql:141:select a.sub_policy_number, a.sub_record_number, c.name,   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./checkers/syschk_RIOrg2Policies.sql:149:select a.sub_policy_number, a.sub_record_number, c.profile_name,   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./checkers/syschk_RIOrg2Policies.sql:157:select a.sub_policy_number, a.sub_record_number, 'No Profile or Company',   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./misc/find_policies.sql:4:	s.sub_policy_number, 
+./misc/find_policies.sql:9: inner join policy_symbol ps on ps.symbol_skey = s.sub_policy_symbol
+./misc/find_policies.sql:14:	 s.sub_policy_number
+./misc/find_policies.sql:19:	s.sub_policy_number, 
+./misc/find_policies.sql:23: inner join policy_symbol ps on ps.symbol_skey = s.sub_policy_symbol
+./misc/find_policies.sql:28:	 s.sub_policy_number
+./misc/find_policies.sql:32:select ic.company_code, ps.policy_code, s.sub_policy_number 
+./misc/find_policies.sql:34:inner join policy_symbol ps on ps.symbol_skey = s.sub_policy_symbol
+./misc/find_policies.sql:36:where sub_policy_number = 315749
+./misc/multiyearpolicyissues9468.sql:2:select  s.sub_policy_number,s.sub_policy_suffix, clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues9468.sql:4:--select s.sub_policy_number, clms.claimOffice, clms.claimNumber, clms.DateOfLoss
+./misc/multiyearpolicyissues9468.sql:19:and s.sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:20:order by s.sub_policy_number
+./misc/multiyearpolicyissues9468.sql:24:select  distinct cp.claimpolicykey, s.sub_policy_number, s.sub_record_number, cp.policysuffix
+./misc/multiyearpolicyissues9468.sql:30:and s.sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:33:select * from Submission where sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:41:select  s.sub_policy_number,s.sub_policy_suffix, s2.sub_policy_suffix, clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues9468.sql:45: join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:48:and s.sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:58: join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:61:and s.sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:77: join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:80:and s.sub_policy_number = 9468
+./misc/multiyearpolicyissues9468.sql:89:select s.sub_policy_number, count(s.sub_record_number)
+./misc/multiyearpolicyissues9468.sql:106:group by s.sub_policy_number
+./misc/multiyearpolicyissues9468.sql:112:--select  s.sub_policy_number,s.sub_policy_suffix, s2.sub_policy_suffix, clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues9468.sql:117: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:120:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:123:select * from Submission where sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:154: left join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:157:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:159:select * from Submission where sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:187: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:190:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:191:and s2.sub_policy_suffix = 1
+./misc/multiyearpolicyissues9468.sql:207: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:210:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:211:and s2.sub_policy_suffix = 2
+./misc/multiyearpolicyissues9468.sql:227: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9468.sql:230:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9468.sql:231:and s2.sub_policy_suffix = 3
+./misc/multiyearpolicyissues9682.sql:7:select s.sub_policy_number, count(s.sub_record_number)
+./misc/multiyearpolicyissues9682.sql:24:group by s.sub_policy_number
+./misc/multiyearpolicyissues9682.sql:30:select  s.sub_policy_number,s.sub_policy_suffix, s2.sub_policy_suffix, clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues9682.sql:35: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9682.sql:38:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:42:select   s.sub_policy_number, s.sub_policy_suffix, s2.sub_policy_suffix as propersuffix, 
+./misc/multiyearpolicyissues9682.sql:48: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number 
+./misc/multiyearpolicyissues9682.sql:64:--and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:65:--and s.sub_policy_number = 800281
+./misc/multiyearpolicyissues9682.sql:67:group by s.sub_policy_number, s.sub_policy_suffix, s2.sub_policy_suffix, clms.claimOffice, clms.claimNumber, clms.ClaimStatus, clms.DateOfLoss
+./misc/multiyearpolicyissues9682.sql:69:order by s.sub_policy_number
+./misc/multiyearpolicyissues9682.sql:75:select * from submission where sub_policy_number = 800281
+./misc/multiyearpolicyissues9682.sql:81:select * from Submission where sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:112: left join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9682.sql:115:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:117:select * from Submission where sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:145: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9682.sql:148:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:149:and s2.sub_policy_suffix = 1
+./misc/multiyearpolicyissues9682.sql:165: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9682.sql:168:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:169:and s2.sub_policy_suffix = 2
+./misc/multiyearpolicyissues9682.sql:185: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number and ( clms.DateOfLoss < s2.sub_current_expiration_Date and clms.DateOfLoss >= s2.sub_current_effective_date)
+./misc/multiyearpolicyissues9682.sql:188:and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:189:and s2.sub_policy_suffix = 3
+./misc/multiyearpolicyissues9682.sql:212:select   s.sub_policy_number, s.sub_policy_suffix, s2.sub_policy_suffix as propersuffix, 
+./misc/multiyearpolicyissues9682.sql:219: left outer join Submission s2 on s2.sub_policy_number = s.sub_policy_number 
+./misc/multiyearpolicyissues9682.sql:235:--and s.sub_policy_number = 9682
+./misc/multiyearpolicyissues9682.sql:236:--and s.sub_policy_number = 800281
+./misc/multiyearpolicyissues9682.sql:238:group by s.sub_policy_number, s.sub_policy_suffix, s2.sub_policy_suffix, clms.claimOffice, clms.claimNumber, clms.ClaimStatus, 
+./misc/multiyearpolicyissues9682.sql:241:order by s.sub_policy_number
+./misc/multiyearpolicyissues.sql:18: and s.sub_policy_number IN 
+./misc/multiyearpolicyissues.sql:24:select s.sub_policy_symbol, s.sub_policy_number, s.sub_policy_number,s.sub_effective_date, cp.effectivedate, s.sub_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:37:select s1.sub_policy_number as policynum, 
+./misc/multiyearpolicyissues.sql:38:count(s1.sub_policy_suffix) as suffixcount
+./misc/multiyearpolicyissues.sql:41:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:42:group by s1.sub_policy_number
+./misc/multiyearpolicyissues.sql:43:having count(s1.sub_policy_suffix) > 1
+./misc/multiyearpolicyissues.sql:44:) t on t.policynum = s2.sub_policy_number
+./misc/multiyearpolicyissues.sql:49:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:58:select  s.sub_policy_number,clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:60:--select s.sub_policy_number, clms.claimOffice, clms.claimNumber, clms.DateOfLoss
+./misc/multiyearpolicyissues.sql:81:from submission where sub_policy_number = 704009
+./misc/multiyearpolicyissues.sql:88:select  s.sub_policy_number,clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:89:--select distinct s.sub_policy_number
+./misc/multiyearpolicyissues.sql:90:--select s.sub_policy_number, count(s.sub_record_number)
+./misc/multiyearpolicyissues.sql:108:--group by s.sub_policy_number
+./misc/multiyearpolicyissues.sql:110:--order by s.sub_policy_number
+./misc/multiyearpolicyissues.sql:114:select  s.sub_policy_number,clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:131:select  s.sub_policy_number,clms.claimOffice, clms.claimNumber, s.sub_current_effective_date, cp.effectivedate, s.sub_current_expiration_Date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:132:--select distinct s.sub_policy_number
+./misc/multiyearpolicyissues.sql:133:--select s.sub_policy_number, count(s.sub_record_number)
+./misc/multiyearpolicyissues.sql:152:group by s.sub_policy_number
+./misc/multiyearpolicyissues.sql:154:order by s.sub_policy_number
+./misc/multiyearpolicyissues.sql:161:select  s.sub_policy_number,s.sub_current_effective_Date, cp.effectivedate, s.sub_current_expiration_date, cp.expirationDate, clms.DateOfLoss, clms.*
+./misc/multiyearpolicyissues.sql:172:select distinct (s.sub_policy_number)
+./misc/multiyearpolicyissues.sql:185:select s1.sub_policy_number as policynum, 
+./misc/multiyearpolicyissues.sql:186:count(s1.sub_policy_suffix) as suffixcount
+./misc/multiyearpolicyissues.sql:189:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:190:group by s1.sub_policy_number
+./misc/multiyearpolicyissues.sql:191:having count(s1.sub_policy_suffix) > 1
+./misc/multiyearpolicyissues.sql:192:) t on t.policynum = s2.sub_policy_number
+./misc/multiyearpolicyissues.sql:202:select s1.sub_policy_number as policynum, 
+./misc/multiyearpolicyissues.sql:203:count(s1.sub_policy_suffix) as suffixcount
+./misc/multiyearpolicyissues.sql:206:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:207:group by s1.sub_policy_number
+./misc/multiyearpolicyissues.sql:208:having count(s1.sub_policy_suffix) > 1
+./misc/multiyearpolicyissues.sql:209:) t on t.policynum = s2.sub_policy_number
+./misc/multiyearpolicyissues.sql:214:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:227:select s1.sub_policy_number as policynum, 
+./misc/multiyearpolicyissues.sql:231:and s1.sub_policy_number != 0
+./misc/multiyearpolicyissues.sql:232:group by s1.sub_policy_number
+./misc/multiyearpolicyissues.sql:244:and sub_policy_number != 0
+./misc/syschk_approvedcompanies.sql:34:		b.sub_policy_number, b.department_number, a.sub_record_no, d.company_name, a.state_abbreviation
+./misc/syschk_approvedcompanies.sql:42:		and b.sub_policy_number not in
+./misc/syschk_approvedcompanies.sql:97:		and b.sub_policy_number not in
+./misc/syschk_NEW_policiescodedtounapprovedcompanies.sql:34:		b.sub_policy_number, b.department_number, a.sub_record_no, d.company_name, a.state_abbreviation
+./misc/syschk_NEW_policiescodedtounapprovedcompanies.sql:42:		and b.sub_policy_number not in
+./misc/syschk_NEW_policiescodedtounapprovedcompanies.sql:97:		and b.sub_policy_number not in
+./misc/syschk_NEW_policiescodedtounapprovedcompanies-2.sql:34:		b.sub_policy_number, b.department_number, a.sub_record_no, d.company_name, a.state_abbreviation
+./misc/syschk_NEW_policiescodedtounapprovedcompanies-2.sql:42:		and b.sub_policy_number not in
+./misc/syschk_NEW_policiescodedtounapprovedcompanies-2.sql:97:		and b.sub_policy_number not in
+./quotebinder/reqts.sql:35:select sub_policy_number
+./quotebinder/docs.sql:9:select s.sub_policy_number, s.sub_record_number, qbdo.qbdo_policy_form, s.CreateDate
+./reinsurance/reinsurance.sql:2:select s.sub_policy_number, s.department_number, e.emp_last_name, 
+./reinsurance/reinsurance.sql:18:select s.sub_policy_number, e.endorsement_number, e.ENDORSEMENT_EFFECTIVE_DATE, e.ENDORSEMENT_EXPIRATION_DATE, 
+./reinsurance/checkers.sql:98:select a.sub_record_number, a.sub_policy_number, isnull(f.company_skey, 0) as company_skey, isnull(d.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(market_ceded_premium) as cededpremium
+./reinsurance/checkers.sql:116:group by a.sub_record_number, a.sub_policy_number, f.company_skey, d.location_skey, profile_skey
+./reinsurance/checkers.sql:129:select sub_record_number, sub_policy_number, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./reinsurance/checkers.sql:132:group by sub_record_number, sub_policy_number, company_skey, profile_skey
+./reinsurance/checkers.sql:137:select a.sub_record_number, a.sub_policy_number, b.company_skey as company_skey, isnull(b.location_skey, 0) as location_skey, isnull(profile_skey, 0) as profile_skey, sum(cededpremiumamt) *-1 as cededpremium
+./reinsurance/checkers.sql:149:group by a.sub_record_number, a.sub_policy_number, b.company_skey, b.location_skey, b.profile_skey
+./reinsurance/checkers.sql:160:select sub_record_number, sub_policy_number, company_skey, profile_skey, sum(cededpremium) as cededpremium
+./reinsurance/checkers.sql:163:group by sub_record_number, sub_policy_number, company_skey, profile_skey
+./reinsurance/checkers.sql:180:select a.sub_policy_number, a.sub_record_number,  b.name as TreatyOrCompany,  a.cededpremium as value, 'in rsms2, not in accounting '  as msg
+./reinsurance/checkers.sql:189:select a.sub_policy_number, a.sub_record_number, b.profile_name,   a.cededpremium as value, 'in rsms2, not in accounting'  as msg
+./reinsurance/checkers.sql:198:select  a.sub_policy_number, a.sub_record_number, 'No Profile or Company',  a.cededpremium as value, 'in rsms2, not in accounting'  as msg
+./reinsurance/checkers.sql:210:select  a.sub_policy_number, a.sub_record_number, b.name,  a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./reinsurance/checkers.sql:218:select a.sub_policy_number, a.sub_record_number, b.profile_name,   a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./reinsurance/checkers.sql:226:select a.sub_policy_number, a.sub_record_number, 'No Profile or Company',   a.cededpremium as value, 'in accounting, not rsms2'  as msg
+./reinsurance/checkers.sql:237:select a.sub_policy_number, a.sub_record_number, c.name,   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./reinsurance/checkers.sql:245:select a.sub_policy_number, a.sub_record_number, c.profile_name,   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./reinsurance/checkers.sql:253:select a.sub_policy_number, a.sub_record_number, 'No Profile or Company',   a.cededpremium - b.cededpremium as value, 'in both, this is difference'  as msg
+./scratch/bindingauth.sql:1:select s.sub_policy_number, count(e.endorsement_skey)
+./scratch/bindingauth.sql:8:group by s.sub_policy_number
+./scratch/bindingauth.sql:25:and sub_policy_symbol is not null
+./scratch/bindingauth.sql:31:select distinct sub_policy_type from submission
+./submissiondetail/submissions_dbanames.sql:1:select s.sub_record_number, s.sub_policy_number,  count(DBA_SEQUENCE_NO)
+./submissiondetail/submissions_dbanames.sql:6:group by s.sub_record_number, s.sub_policy_number
+./submissiondetail/submissions_dbanames.sql:10:select s.sub_record_number, s.sub_policy_number,  s.sub_insured_name, dban.DBA_NAME,  dban.DBA_SEQUENCE_NO
+./submissiondetail/submissions.sql:10:and s.sub_policy_number is null

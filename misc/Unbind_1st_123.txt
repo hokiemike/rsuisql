@@ -1,0 +1,12 @@
+<gatewayrequest program="Liquor Liability">
+    <UnbindPolicy>
+        <submissionnumber>123</submissionnumber>
+        <policy>
+            <companycode>N</companycode>
+            <policysymbol>LL</policysymbol>
+            <policynumber>000411</policynumber>
+            <policysuffix>00</policysuffix>
+        </policy>
+	<moddate></moddate>
+    </UnbindPolicy>
+</gatewayrequest>

@@ -1,0 +1,12 @@
+select RTRIM(ic.COMPANY_CODE) + ps.POLICY_CODE + '0' + RIGHT(STR(s.SUB_POLICY_NUMBER),5) + ' 00'  as policy, 
+       s.SUB_EFFECTIVE_DATE, 
+       s.SUB_INSURED_NAME
+from Submission s
+join POLICY_SYMBOL ps on s.SUB_POLICY_SYMBOL = ps.SYMBOL_SKEY
+join LOCATION loc on s.LOCATION_SKEY = loc.LOCATION_SKEY
+join COMPANY c on loc.COMPANY_SKEY = c.COMPANY_SKEY
+join INSURANCE_COMPANIES ic on s.COMPANY_RECORD_NUMBER = ic.COMPANY_RECORD_NUMBER
+where 1=1
+and s.DEPARTMENT_NUMBER = 10006
+and c.NAME like '%bass%'
+and s.CreateDate > '6/1/2009'
